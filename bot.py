@@ -48,7 +48,7 @@ async def send_welcome(message: types.Message):
 @dp.message_handler(content_types=['text'])
 async def handle_docs_photo(message):
     _user_name = message.from_user.first_name
-    _text = "Смотри, %s! Ты отправляешь фотографию, а я говорю тебе: 'what is this' and % of prediction score" %_user_name
+    _text = "Смотри, %s! Ты отправляешь фотографию, а я говорю тебе: 'what is this' and prediction score" %_user_name
 
     await bot.send_message(message.chat.id, _text)
 
