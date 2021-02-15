@@ -24,13 +24,7 @@ model = keras.applications.Xception(
     classifier_activation="softmax",
 )
 
-model.summary()
-
-model.compile(
-    optimizer=keras.optimizers.Adam(1e-5),  # Low learning rate
-    loss=keras.losses.BinaryCrossentropy(from_logits=True),
-    metrics=[keras.metrics.BinaryAccuracy()],
-)
+model.compile()
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
