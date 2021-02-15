@@ -64,12 +64,12 @@ async def handle_docs_photo(message):
     _img_path = _photo_name
     _img = load_img(_img_path, target_size=(299, 299))  # this is a PIL image
     _img_arr = img_to_array(_img)  # Numpy array with shape (299, 299, 3)
-    _img_arr = _img_arr.reshape((1,) + x.shape)  # Numpy array with shape (1, 299, 299, 3)
+    _img_arr = _img_arr.reshape((1,) + _img_arr.shape)  # Numpy array with shape (1, 299, 299, 3)
     # Rescale by 1/255
     _img_arr /= 255
 
     _preds = model.predict(_img_arr)
-    _pred_decoded = decode_predictions(preds)[0][0:3]
+    _pred_decoded = decode_predictions(_preds)[0][0:3]
     _pred_decoded = [el[1:] for el in _pred_decoded]
     _test_text_of_prediction = ' '.join([str(elem) for elem in _pred_decoded])
     _test_text_of_prediction = re.sub("[,']", "", _test_text_of_prediction)
